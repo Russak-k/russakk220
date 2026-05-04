@@ -897,15 +897,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				bloodsies.color = head.blood_color
 				standing.overlays += bloodsies
 
-		// SS220 EDIT START - Species overlay shift
-		. = list()
-		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(length(.) > 0)
-			standing.pixel_x += .["shift_x"]
-			standing.pixel_y += .["shift_y"]
-		// SS220 EDIT END
+			// SS220 EDIT START - Species overlay shift
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			// SS220 EDIT END
 
-		overlays_standing[HEAD_LAYER] = standing
+			overlays_standing[HEAD_LAYER] = standing
 	apply_overlay(HEAD_LAYER)
 
 /mob/living/carbon/human/update_inv_belt()
@@ -935,14 +935,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			var/worn_icon = belt.worn_icon || listgetindex(belt.sprite_sheets, dna.species.sprite_sheet_name) || 'icons/mob/clothing/belt.dmi'
 			var/worn_icon_state = belt.worn_icon_state || belt.icon_state
 			// SS220 EDIT - вызов сдвигов
-		var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_icon_state, layer = -worn_layer)
-		. = list()
-		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
-		if(length(.) > 0)
-			standing.pixel_x += .["shift_x"]
-			standing.pixel_y += .["shift_y"]
-		overlays_standing[worn_layer] = standing
-		// SS220 EDIT END
+			var/mutable_appearance/standing = mutable_appearance(worn_icon, worn_icon_state, layer = -worn_layer)
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			overlays_standing[worn_layer] = standing
+			// SS220 EDIT END
 
 	apply_overlay(BELT_LAYER)
 	apply_overlay(SPECIAL_BELT_LAYER)
