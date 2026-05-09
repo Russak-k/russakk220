@@ -124,7 +124,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		formatted.Add(list(list(
 			"display_name" = get_skin_desc(skin),
 			"skin" = skin,
-			"icon" = 'icons/obj/card.dmi')))
+			"icon" = 'modular_ss220/aesthetics/better_ids/icons/card.dmi'))) // SS220 EDIT - Отображения наших спрайтов в консоли доступов
 	return formatted
 
 /obj/machinery/computer/card/AltClick(mob/user)
